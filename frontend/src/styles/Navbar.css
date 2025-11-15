@@ -1,0 +1,478 @@
+/* Navbar.css - Advanced Border Boxing System */
+
+/* CSS Variables for Border Boxing System */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  box-sizing: border-box;
+}
+:root {
+  /* Border Color System */
+  --border-primary: #667eea;
+  --border-secondary: #764ba2;
+  --border-accent: #f5576c;
+  --border-glass: rgba(255, 255, 255, 0.2);
+  --border-dark: rgba(0, 0, 0, 0.1);
+  
+  /* Gradient Borders */
+  --border-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --border-gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  
+  /* Border Widths */
+  --border-sm: 1px;
+  --border-md: 2px;
+  --border-lg: 3px;
+  --border-xl: 4px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  
+  /* Effects */
+  --glass-bg: rgba(19, 16, 16, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --blur-effect: blur(10px);
+  --text-primary: #2d3748;
+  --text-light: #ffffff;
+  
+  /* Transitions */
+  --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-quick: all 0.3s ease;
+}
+
+/* Global Border Box Reset */
+.navbar *,
+.navbar *::before,
+.navbar *::after {
+  box-sizing: border-box;
+}
+
+/* Base Navbar with Border Boxing */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur-effect);
+  -webkit-backdrop-filter: var(--blur-effect);
+  
+  /* Border Boxing Properties */
+  border: var(--border-sm) solid var(--border-glass);
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-shadow);
+  
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: var(--transition-smooth);
+  margin: 0.5rem;
+}
+
+/* Navbar Brand with Border Effects */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border: var(--border-sm) solid transparent;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-smooth);
+}
+
+.navbar-brand:hover {
+  border: var(--border-sm) solid var(--border-glass);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.navbar-title {
+  background: var(--border-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  padding: 0.5rem 1rem;
+  
+  /* Border Boxing for Title */
+  border: var(--border-md) solid transparent;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-smooth);
+}
+
+.navbar-title::before {
+  content: "📚";
+  position: absolute;
+  left: -2rem;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transition-smooth);
+}
+
+.navbar-title:hover::before {
+  opacity: 1;
+  transform: scale(1.2) rotate(15deg);
+  left: -2.5rem;
+}
+
+.navbar-title:hover {
+  border: var(--border-md) solid var(--border-primary);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Navbar Links Container with Border Layout */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  position: relative;
+  padding: 0.5rem;
+  
+  /* Border Container */
+  border: var(--border-sm) solid transparent;
+  border-radius: var(--radius-md);
+  transition: var(--transition-smooth);
+}
+
+/* Advanced Border Boxing for Navigation Links */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  
+  /* Border Boxing Properties */
+  border: var(--border-md) solid transparent;
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Solid Border Variant */
+.nav-link.border-solid {
+  border-style: solid;
+  border-color: var(--border-glass);
+}
+
+.nav-link.border-dashed {
+  border-style: dashed;
+  border-color: var(--border-glass);
+}
+
+/* Gradient Border Effect */
+.nav-link.border-gradient {
+  border: var(--border-md) solid;
+  border-image: var(--border-gradient-primary) 1;
+}
+
+/* Hover Border Transformations */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--border-gradient-primary);
+  transition: var(--transition-smooth);
+  z-index: -1;
+  border-radius: var(--radius-md);
+}
+
+.nav-link:hover::before {
+  left: 0;
+}
+
+.nav-link:hover {
+  color: var(--text-light);
+  transform: translateY(-2px);
+  
+  /* Border Transform on Hover */
+  border: var(--border-md) solid var(--border-primary);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.nav-link:active {
+  transform: translateY(0);
+  transition: var(--transition-quick);
+}
+
+/* Active Link State with Border Emphasis */
+.nav-link.active {
+  background: var(--border-gradient-primary);
+  color: var(--text-light);
+  
+  /* Enhanced Border for Active State */
+  border: var(--border-lg) solid var(--border-secondary);
+  box-shadow: 
+    0 6px 20px rgba(102, 126, 234, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Advanced Border Boxing for Logout Button */
+.logout-btn {
+  position: relative;
+  background: var(--border-gradient-secondary);
+  color: var(--text-light);
+  
+  /* Border Boxing Properties */
+  border: var(--border-md) solid transparent;
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.3);
+}
+
+/* Animated Border Effect */
+.logout-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: var(--transition-smooth);
+  transform: translate(-50%, -50%);
+}
+
+.logout-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  
+  /* Border Enhancement on Hover */
+  border: var(--border-md) solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 12px 30px rgba(245, 87, 108, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.logout-btn:active {
+  transform: translateY(0) scale(1);
+  transition: var(--transition-quick);
+}
+
+/* Scrolled State with Border Refinement */
+.navbar.scrolled {
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  
+  /* Refined Border for Scrolled State */
+  border: var(--border-sm) solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Border Group for Mobile Layout */
+.navbar-links.border-group {
+  display: flex;
+  gap: 0;
+  border: var(--border-sm) solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.navbar-links.border-group .nav-link,
+.navbar-links.border-group .logout-btn {
+  border-radius: 0;
+  border: none;
+  border-right: var(--border-sm) solid var(--border-glass);
+  margin: 0;
+}
+
+.navbar-links.border-group .nav-link:last-child,
+.navbar-links.border-group .logout-btn:last-child {
+  border-right: none;
+}
+
+/* Mobile Responsive Design with Border Adaptations */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0.25rem;
+    
+    /* Mobile Border Adjustment */
+    border: var(--border-sm) solid var(--border-glass);
+    border-radius: var(--radius-lg);
+  }
+
+  .navbar-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    
+    /* Mobile Border Layout */
+    border: var(--border-sm) solid transparent;
+  }
+
+  .nav-link, .logout-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    
+    /* Mobile Border Sizing */
+    border: var(--border-sm) solid var(--border-glass);
+    border-radius: var(--radius-sm);
+  }
+
+  .navbar-title {
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+    
+    /* Mobile Title Border */
+    border: var(--border-sm) solid transparent;
+  }
+}
+
+/* Tablet Responsive Design */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+    
+    /* Tablet Border Refinement */
+    border: var(--border-sm) solid var(--border-glass);
+  }
+
+  .navbar-links {
+    gap: 1rem;
+  }
+
+  .nav-link, .logout-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+    
+    /* Tablet Border Sizing */
+    border: var(--border-sm) solid var(--border-glass);
+  }
+}
+
+/* Dark Mode Border Adjustments */
+@media (prefers-color-scheme: dark) {
+  .navbar.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    border: var(--border-sm) solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .nav-link {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Border Animation Systems */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+  }
+  50% {
+    border-color: rgba(102, 126, 234, 0.8);
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.8);
+  }
+}
+
+.nav-link.loading {
+  animation: borderGlow 2s ease-in-out infinite;
+  border: var(--border-md) solid rgba(102, 126, 234, 0.5);
+}
+
+/* Focus States with Border Emphasis */
+.nav-link:focus,
+.logout-btn:focus {
+  outline: none;
+  
+  /* Border-based Focus Ring */
+  border: var(--border-lg) solid #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Reduced Motion Border Support */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-smooth: all 0.1s ease;
+    --transition-quick: all 0.1s ease;
+  }
+
+  .nav-link:hover,
+  .logout-btn:hover {
+    transform: none;
+    border-color: var(--border-primary);
+  }
+}
+
+/* High Contrast Mode Border Support */
+@media (prefers-contrast: high) {
+  .nav-link {
+    border: var(--border-md) solid currentColor;
+  }
+
+  .logout-btn {
+    border: var(--border-md) solid currentColor;
+  }
+  
+  .navbar {
+    border: var(--border-md) solid currentColor;
+  }
+}
+
+/* Print Border Styles */
+@media print {
+  .navbar {
+    border: 1px solid #000 !important;
+    box-shadow: none !important;
+    background: white !important;
+  }
+  
+  .nav-link, .logout-btn {
+    border: 1px solid #000 !important;
+    background: white !important;
+    color: black !important;
+  }
+}
